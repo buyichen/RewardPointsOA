@@ -18,9 +18,6 @@ public class Transaction {
     private int rewardPoints;
     private LocalDate transactionDate;
 
-    // Constructors, getters, and setters
-
-    // Additional constructor for convenience
     public Transaction(Long customerId, double purchaseAmount, LocalDate transactionDate) {
         this.customerId = customerId;
         this.purchaseAmount = purchaseAmount;

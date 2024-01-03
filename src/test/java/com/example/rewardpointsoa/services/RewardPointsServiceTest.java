@@ -53,7 +53,7 @@ class RewardPointsServiceTest {
     @Test
     void testCalculateRewardPointsFor220() {
         double purchaseAmount = 220.0;
-        int expectedPoints = 290; // Expected points for the given purchase amount
+        int expectedPoints = 290;
         int actualPoints = rewardPointsService.calculateRewardPoints(purchaseAmount);
         assertEquals(expectedPoints, actualPoints);
     }

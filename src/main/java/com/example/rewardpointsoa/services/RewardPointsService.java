@@ -34,6 +34,7 @@ public class RewardPointsService {
         return transactionRepository.save(transaction);
     }
 
+    // Save the transaction as it come as a list
     public List<Transaction> saveTransactions(List<Transaction> transactions) {
         return transactions.stream()
                 .map(dto -> {
