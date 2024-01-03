@@ -3,10 +3,12 @@ package com.example.rewardpointsoa.controllers;
 import com.example.rewardpointsoa.entities.Transaction;
 import com.example.rewardpointsoa.services.RewardPointsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -17,8 +19,8 @@ public class RewardPointController {
     private RewardPointsService rewardPointsService;
 
     @PostMapping
-    public Transaction saveTransaction(@RequestBody Transaction transaction) {
-        return rewardPointsService.saveTransaction(transaction);
+    public ResponseEntity<List<Transaction>> saveTransactions(@RequestBody List<Transaction> transactions) {
+        return new ResponseEntity<>(rewardPointsService.saveTransactions(transactions), HttpStatus.CREATED);
     }
 
     @GetMapping("/customer/{customerId}/monthly-reward-points")

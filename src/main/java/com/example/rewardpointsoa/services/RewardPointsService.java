@@ -34,6 +34,19 @@ public class RewardPointsService {
         return transactionRepository.save(transaction);
     }
 
+    public List<Transaction> saveTransactions(List<Transaction> transactions) {
+        return transactions.stream()
+                .map(dto -> {
+                    Transaction transaction = new Transaction(
+                            dto.getCustomerId(),
+                            dto.getPurchaseAmount(),
+                            dto.getTransactionDate()
+                    );
+                    return saveTransaction(transaction);
+                })
+                .collect(Collectors.toList());
+    }
+
     public Map<Month, Integer> getRewardPointsForCustomerPerMonth(Long customerId) {
         List<Transaction> transactions = transactionRepository.findByCustomerId(customerId);
         return transactions.stream()
